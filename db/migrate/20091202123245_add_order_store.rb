@@ -4,6 +4,9 @@ class AddOrderStore < ActiveRecord::Migration
       add_column :orders, :store_id, :integer
     elsif table_exists?('spree_orders')
       add_column :spree_orders, :store_id, :integer unless column_exists?(:spree_orders, :store_id)
+    # mine before merge (instead of above elsif)
+    #elsif table_exists?('spree_orders') && !column_exists?(:spree_orders, :store_id, :integer)
+      #add_column :spree_orders, :store_id, :integer
     end
   end
 
